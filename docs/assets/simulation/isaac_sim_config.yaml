@@ -1,0 +1,36 @@
+# Isaac Sim Configuration File
+# This configuration sets up common parameters for robotics simulation
+
+app:
+  window_width: 1280
+  window_height: 720
+  render_frame_delta: 1
+  enable_viewport_render: true
+  enable_cameras: true
+
+physics:
+  solver_type: 0  # 0: TGS, 1: PG
+  fixed_timestep: 0.008333  # 120 Hz
+  max_substeps: 1
+  enable_flatcache: true
+  enable_gpu_dynamics: false  # Set to true if using GPU dynamics
+
+sensors:
+  lidar:
+    enable: true
+    rotation_frequency: 10
+    points_per_second: 500000
+  camera:
+    enable: true
+    resolution: [640, 480]
+    fov: 60
+
+extensions:
+  enable_ros_bridge: true
+  enable_perception: true
+  enable_navigation: false  # Enable as needed
+
+robot:
+  default_position: [0, 0, 0.5]
+  default_orientation: [0, 0, 0, 1]  # [x, y, z, w] quaternion
+  enable_collisions: true

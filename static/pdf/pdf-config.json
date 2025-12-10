@@ -1,0 +1,23 @@
+{
+  "pdf_options": {
+    "format": "A4",
+    "margin": {
+      "top": "20px",
+      "right": "20px",
+      "bottom": "20px",
+      "left": "20px"
+    },
+    "printBackground": true,
+    "displayHeaderFooter": true,
+    "headerTemplate": "<div style=\"font-size: 10px; text-align: center; width: 100%;\"><span class=\"title\"></span></div>",
+    "footerTemplate": "<div style=\"font-size: 10px; text-align: center; width: 100%;\">Page <span class=\"pageNumber\"></span> of <span class=\"totalPages\"></span></div>"
+  },
+  "content_selector": ".main-wrapper",
+  "exclude_selectors": [
+    ".theme-edit-this-page",
+    ".theme-last-updated",
+    "footer"
+  ],
+  "output_dir": "./pdf-output/",
+  "filename_pattern": "physical-ai-textbook-module-{module_number}.pdf"
+}

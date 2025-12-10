@@ -1,55 +1,56 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 0.0.0 (template) -> 1.0.0
+Modified principles: None (initial fill)
+Added sections: Key Standards, Constraints, Success Criteria (as Governance Rules)
+Removed sections: None
+Templates requiring updates:
+  ✅ .specify/templates/plan-template.md
+  ✅ .specify/templates/spec-template.md
+  ✅ .specify/templates/tasks-template.md
+  ✅ .specify/templates/commands/sp.constitution.md
+Follow-up TODOs: None
+-->
+# Physical AI & Humanoid Robotics – A Textbook for Learning Embodied Intelligence (ROS 2, Gazebo, NVIDIA Isaac, VLA Models) Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Scientific Accuracy
+Har concept (ROS 2, Isaac, Gazebo, Robotics) verified ho peer-reviewed robotics/AI papers se.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Hands-on Focus
+Students real robot simulation + control kar saken (ROS 2, Gazebo, Isaac Sim).
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Embodied Intelligence First
+Digital AI → Physical actions → Sensors → Actuators ke complete loop ka focus.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Reproducible Robotics
+Har experiment exact steps & reproducible code blocks ke sath documented.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Progressive Learning
+Module 1 → 4 incrementally skill build karta hai.
 
-### [PRINCIPLE_6_NAME]
+## Key Standards
 
+- Citations: APA Style
+- Images: High-res robot/system diagrams
+- Code Blocks: ROS 2 Python, Gazebo SDF/URDF, Isaac Sim Python snippets
+- Real-world robotics accuracy (no fantasy robots)
+- Minimum 50% sources robotics journals se (Springer, IEEE)
+- Complexity Level: Undergraduate Robotics
 
-[PRINCIPLE__DESCRIPTION]
+## Constraints
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Book Word Count: 40,000 – 60,000 words
+- 4 Modules × har module me 3 full chapters
+- Format: Docusaurus MDX
+- Deadline: 12 weeks
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+- Students ROS 2 me humanoid control implement kar saken
+- Gazebo + Isaac Sim me robot ko simulate kar saken
+- VLA (Vision-Language-Action) pipeline complete ho
+- Capstone: Student ek humanoid ko voice command → path planning → object grasping tak control kar sake
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-09 | **Last Amended**: 2025-12-09

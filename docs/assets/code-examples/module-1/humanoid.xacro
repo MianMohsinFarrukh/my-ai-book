@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="humanoid_xacro">
+
+  <!-- Constants -->
+  <xacro:property name="M_PI" value="3.1415926535897931"/>
+  <xacro:property name="mass_pelvis" value="5.0"/>
+  <xacro:property name="mass_torso" value="8.0"/>
+  <xacro:property name="mass_head" value="1.5"/>
+  <xacro:property name="mass_upper_arm" value="1.0"/>
+  <xacro:property name="mass_forearm" value="0.8"/>
+  <xacro:property name="mass_thigh" value="1.5"/>
+  <xacro:property name="mass_shin" value="1.2"/>
+  <xacro:property name="mass_foot" value="0.5"/>
+
+  <!-- Materials -->
+  <material name="black">
+    <color rgba="0.0 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0.0 0.0 0.8 1.0"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0.0 0.8 0.0 1.0"/>
+  </material>
+
+  <material name="grey">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+  </material>
+
+  <material name="orange">
+    <color rgba="1.0 0.4235294117647059 0.0392156862745098 1.0"/>
+  </material>
+
+  <material name="red">
+    <color rgba="0.8 0.0 0.0 1.0"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+  <!-- Macro for creating a generic link -->
+  <xacro:macro name="generic_link" params="name mass *visual_geometry *collision_geometry *inertial_values">
+    <link name="${name}">
+      <visual>
+        <xacro:insert_block name="visual_geometry"/>
+      </visual>
+
+      <collision>
+        <xacro:insert_block name="collision_geometry"/>
+      </collision>
+
+      <inertial>
+        <xacro:insert_block name="inertial_values"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- Macro for creating a revolute joint -->
+  <xacro:macro name="revolute_joint" params="name parent child xyz axis lower upper effort velocity *origin">
+    <joint name="${name}" type="revolute">
+      <parent link="${parent}"/>
+      <child link="${child}"/>
+      <xacro:insert_block name="origin"/>
+      <axis xyz="${axis}"/>
+      <limit lower="${lower}" upper="${upper}" effort="${effort}" velocity="${velocity}"/>
+      <dynamics damping="0.1" friction="0.01"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- Macro for creating a humanoid limb -->
+  <xacro:macro name="humanoid_limb" params="prefix parent_link x_offset y_offset z_offset side">
+    <!-- Hip joint -->
+    <joint name="${prefix}_hip_yaw" type="revolute">
+      <parent link="${parent_link}"/>
+      <child link="${prefix}_thigh"/>
+      <origin xyz="${x_offset} ${y_offset} ${z_offset}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-0.52" upper="0.52" effort="200" velocity="2.0"/>
+      <dynamics damping="1.0" friction="0.1"/>
+    </joint>
+
+    <link name="${prefix}_thigh">
+      <visual>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.05" length="0.4"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.05" length="0.4"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <mass value="${mass_thigh}"/>
+        <inertia ixx="0.015" ixy="0" ixz="0" iyy="0.015" iyz="0" izz="0.002"/>
+      </inertial>
+    </link>
+
+    <!-- Knee joint -->
+    <joint name="${prefix}_knee" type="revolute">
+      <parent link="${prefix}_thigh"/>
+      <child link="${prefix}_shin"/>
+      <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="0" upper="2.35" effort="300" velocity="1.5"/>
+      <dynamics damping="0.5" friction="0.05"/>
+    </joint>
+
+    <link name="${prefix}_shin">
+      <visual>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.045" length="0.4"/>
+        </geometry>
+        <material name="grey"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.045" length="0.4"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+        <mass value="${mass_shin}"/>
+        <inertia ixx="0.012" ixy="0" ixz="0" iyy="0.012" iyz="0" izz="0.0015"/>
+      </inertial>
+    </link>
+
+    <!-- Ankle joint -->
+    <joint name="${prefix}_ankle_pitch" type="revolute">
+      <parent link="${prefix}_shin"/>
+      <child link="${prefix}_foot"/>
+      <origin xyz="0 0 -0.4" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="-0.52" upper="0.52" effort="100" velocity="1.0"/>
+      <dynamics damping="0.2" friction="0.02"/>
+    </joint>
+
+    <link name="${prefix}_foot">
+      <visual>
+        <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.1 0.1"/>
+        </geometry>
+        <material name="white"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.2 0.1 0.1"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 -0.05" rpy="0 0 0"/>
+        <mass value="${mass_foot}"/>
+        <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.002" iyz="0" izz="0.002"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- Macro for creating an arm -->
+  <xacro:macro name="humanoid_arm" params="prefix parent_link x_offset y_offset z_offset">
+    <!-- Shoulder joint -->
+    <joint name="${prefix}_shoulder_yaw" type="revolute">
+      <parent link="${parent_link}"/>
+      <child link="${prefix}_upper_arm"/>
+      <origin xyz="${x_offset} ${y_offset} ${z_offset}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="-1.57" upper="1.57" effort="100" velocity="2.5"/>
+      <dynamics damping="0.2" friction="0.05"/>
+    </joint>
+
+    <link name="${prefix}_upper_arm">
+      <visual>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.04" length="0.3"/>
+        </geometry>
+        <material name="${prefix == 'left' and 'blue' or 'green'}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.04" length="0.3"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 -0.15" rpy="0 0 0"/>
+        <mass value="${mass_upper_arm}"/>
+        <inertia ixx="0.005" ixy="0" ixz="0" iyy="0.005" iyz="0" izz="0.001"/>
+      </inertial>
+    </link>
+
+    <!-- Elbow joint -->
+    <joint name="${prefix}_elbow" type="revolute">
+      <parent link="${prefix}_upper_arm"/>
+      <child link="${prefix}_forearm"/>
+      <origin xyz="0 0 -0.3" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <limit lower="0" upper="2.5" effort="80" velocity="3.0"/>
+      <dynamics damping="0.1" friction="0.02"/>
+    </joint>
+
+    <link name="${prefix}_forearm">
+      <visual>
+        <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.035" length="0.24"/>
+        </geometry>
+        <material name="${prefix == 'left' and 'blue' or 'green'}"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.035" length="0.24"/>
+        </geometry>
+      </collision>
+
+      <inertial>
+        <origin xyz="0 0 -0.12" rpy="0 0 0"/>
+        <mass value="${mass_forearm}"/>
+        <inertia ixx="0.003" ixy="0" ixz="0" iyy="0.003" iyz="0" izz="0.0005"/>
+      </inertial>
+    </link>
+  </xacro:macro>
+
+  <!-- Root link: pelvis -->
+  <link name="pelvis">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2 0.25 0.15"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.2 0.25 0.15"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${mass_pelvis}"/>
+      <inertia ixx="0.05" ixy="0" ixz="0" iyy="0.04" iyz="0" izz="0.03"/>
+    </inertial>
+  </link>
+
+  <!-- Spine joint -->
+  <joint name="torso_joint" type="revolute">
+    <parent link="pelvis"/>
+    <child link="torso"/>
+    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.5" upper="0.5" effort="200" velocity="1.5"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <link name="torso">
+    <visual>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.2 0.4"/>
+      </geometry>
+      <material name="grey"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.15 0.2 0.4"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0.2" rpy="0 0 0"/>
+      <mass value="${mass_torso}"/>
+      <inertia ixx="0.15" ixy="0" ixz="0" iyy="0.12" iyz="0" izz="0.08"/>
+    </inertial>
+  </link>
+
+  <!-- Neck joint -->
+  <joint name="neck_joint" type="revolute">
+    <parent link="torso"/>
+    <child link="head"/>
+    <origin xyz="0 0 0.45" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.5" upper="0.5" effort="20" velocity="2.0"/>
+    <dynamics damping="0.1" friction="0.05"/>
+  </joint>
+
+  <link name="head">
+    <visual>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+      <material name="orange"/>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <geometry>
+        <sphere radius="0.08"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <mass value="${mass_head}"/>
+      <inertia ixx="0.004" ixy="0" ixz="0" iyy="0.004" iyz="0" izz="0.004"/>
+    </inertial>
+  </link>
+
+  <!-- Instantiate left and right limbs using macros -->
+  <xacro:humanoid_limb prefix="left_leg" parent_link="pelvis" x_offset="0.05" y_offset="0.1" z_offset="-0.05" side="left"/>
+  <xacro:humanoid_limb prefix="right_leg" parent_link="pelvis" x_offset="0.05" y_offset="-0.1" z_offset="-0.05" side="right"/>
+  <xacro:humanoid_arm prefix="left" parent_link="torso" x_offset="0.05" y_offset="0.12" z_offset="0.35"/>
+  <xacro:humanoid_arm prefix="right" parent_link="torso" x_offset="0.05" y_offset="-0.12" z_offset="0.35"/>
+
+  <!-- Gazebo plugins -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/humanoid</robotNamespace>
+    </plugin>
+  </gazebo>
+
+</robot>
