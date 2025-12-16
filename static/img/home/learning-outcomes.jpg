@@ -1,0 +1,13 @@
+<!-- Placeholder for learning outcomes image -->
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="300" fill="#ffffff" stroke="#ccc" stroke-width="2"/>
+  <text x="300" y="50" font-family="Arial" font-size="20" fill="#4f8bf9" text-anchor="middle">Learning Outcomes Visualization</text>
+  <circle cx="150" cy="120" r="25" fill="#4f8bf9" opacity="0.7"/>
+  <text x="150" y="125" font-family="Arial" font-size="16" fill="white" text-anchor="middle">1</text>
+  <circle cx="250" cy="120" r="25" fill="#735ce6" opacity="0.7"/>
+  <text x="250" y="125" font-family="Arial" font-size="16" fill="white" text-anchor="middle">2</text>
+  <circle cx="350" cy="120" r="25" fill="#4f8bf9" opacity="0.7"/>
+  <text x="350" y="125" font-family="Arial" font-size="16" fill="white" text-anchor="middle">3</text>
+  <circle cx="450" cy="120" r="25" fill="#735ce6" opacity="0.7"/>
+  <text x="450" y="125" font-family="Arial" font-size="16" fill="white" text-anchor="middle">4</text>
+</svg>

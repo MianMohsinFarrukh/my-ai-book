@@ -1,0 +1,17 @@
+<!-- Placeholder for sim-to-real blog image -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#735ce6"/>
+  <text x="400" y="60" font-family="Arial" font-size="24" fill="white" text-anchor="middle">Sim-to-Real Transfer</text>
+  <text x="400" y="100" font-family="Arial" font-size="18" fill="white" text-anchor="middle">Bridging the Reality Gap with Gazebo and NVIDIA Isaac</text>
+  <rect x="100" y="150" width="200" height="150" fill="white" opacity="0.9" rx="10"/>
+  <text x="200" y="230" font-family="Arial" font-size="16" fill="#735ce6" text-anchor="middle">Simulation</text>
+  <rect x="500" y="150" width="200" height="150" fill="#4f8bf9" opacity="0.9" rx="10"/>
+  <text x="600" y="230" font-family="Arial" font-size="16" fill="white" text-anchor="middle">Reality</text>
+  <path d="M300,225 L500,225" stroke="white" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="400" y="210" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Transfer</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="white" />
+    </marker>
+  </defs>
+</svg>

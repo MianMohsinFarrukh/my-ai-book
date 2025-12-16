@@ -1,0 +1,118 @@
+# API Contracts: Docusaurus Textbook Enhancement
+
+## Contract for Logo Component
+
+### Logo Integration Interface
+
+**Purpose**: Interface for integrating the professional logo into Docusaurus navbar and footer
+
+**Input Parameters**:
+- `logoPath`: string - Path to logo file (SVG or PNG)
+- `altText`: string - Accessibility description
+- `width`: number - Display width in pixels (optional, defaults to auto)
+- `height`: number - Display height in pixels (optional, defaults to auto)
+- `className`: string - Additional CSS classes (optional)
+
+**Response**:
+- Returns React component rendering the logo with appropriate sizing and accessibility attributes
+- Supports both dark and light mode themes
+- Responsive sizing based on container
+
+**Validation**:
+- Logo file must exist at specified path
+- Alt text must be provided
+- Dimensions must be valid if specified
+
+## Contract for Home Page Components
+
+### Hero Section Component
+
+**Purpose**: Display the main hero section with title and background image
+
+**Input Parameters**:
+- `title`: string - Main headline text
+- `subtitle`: string - Supporting text
+- `imageUrl`: string - Path to background/featured image
+- `ctaText`: string - Call-to-action button text
+- `ctaUrl`: string - URL for call-to-action button
+
+**Response**:
+- Returns React component with responsive hero section
+- Includes proper heading hierarchy (h1 for title)
+- Background image with appropriate alt text
+
+### Content Section Component
+
+**Purpose**: Display structured content sections explaining concepts
+
+**Input Parameters**:
+- `sectionId`: string - Unique identifier for the section
+- `title`: string - Section heading
+- `content`: string - Markdown/MDX content
+- `imagePath`: string - Optional image to accompany content
+- `imageAlt`: string - Alt text for image
+
+**Response**:
+- Returns React component with heading, content, and optional image
+- Proper semantic HTML structure
+- Responsive layout
+
+## Contract for Blog System
+
+### Blog Post Frontmatter Schema
+
+**Purpose**: Define required metadata for blog posts
+
+**Fields**:
+- `title`: string (required) - Blog post title
+- `date`: string (required, ISO 8601) - Publication date
+- `authors`: array of strings (required) - Post authors
+- `description`: string (required) - Meta description for SEO
+- `tags`: array of strings (required) - Technology/module tags
+- `image`: string (optional) - Path to featured image
+- `draft`: boolean (optional, default: false) - Whether post is draft
+- `moduleLink`: string (optional) - Reference to related textbook module
+
+### Blog Post Content Structure
+
+**Purpose**: Define content requirements for educational blog posts
+
+**Requirements**:
+- Minimum 800 words, maximum 1200 words
+- Academic tone with proper citations (APA style)
+- Technology focus aligned with textbook (ROS 2, Gazebo, NVIDIA Isaac, VLA)
+- Link to relevant textbook modules
+- High-quality images with appropriate alt text
+- Clear learning objectives stated
+
+## Contract for Navigation Integration
+
+### Navbar Configuration
+
+**Purpose**: Define logo integration in Docusaurus navbar
+
+**Configuration Object**:
+- `logo`: object
+  - `alt`: string - Logo alt text
+  - `src`: string - Path to logo file
+  - `srcDark`: string - Path to dark mode logo (optional)
+  - `width`: number - Logo width (optional)
+  - `height`: number - Logo height (optional)
+  - `href`: string - Link destination (optional)
+  - `target`: string - Link target (optional)
+
+## Contract for Asset Management
+
+### Image Optimization Requirements
+
+**Purpose**: Define standards for image assets
+
+**Requirements**:
+- All images must be optimized for web delivery
+- Maximum file size recommendations:
+  - Logo: < 50KB
+  - Home page images: < 200KB each
+  - Blog featured images: < 150KB each
+- Alt text required for all images
+- Responsive image formats where possible
+- Appropriate dimensions for intended display context

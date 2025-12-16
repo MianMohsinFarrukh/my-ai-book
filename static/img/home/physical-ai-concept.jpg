@@ -1,0 +1,7 @@
+<!-- Placeholder for physical AI concept image -->
+<svg width="600" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="300" fill="#735ce6"/>
+  <text x="300" y="150" font-family="Arial" font-size="20" fill="white" text-anchor="middle">Physical AI Concept Visualization</text>
+  <path d="M100,100 L200,100 L200,200 L100,200 Z" fill="#4f8bf9" opacity="0.7"/>
+  <circle cx="400" cy="150" r="40" fill="#ffffff" opacity="0.7"/>
+</svg>

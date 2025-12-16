@@ -1,0 +1,19 @@
+<!-- Placeholder for ROS 2 architecture blog image -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#4f8bf9"/>
+  <text x="400" y="80" font-family="Arial" font-size="24" fill="white" text-anchor="middle">ROS 2 Architecture</text>
+  <text x="400" y="120" font-family="Arial" font-size="18" fill="white" text-anchor="middle">The Nervous System of Modern Robotics</text>
+  <circle cx="200" cy="200" r="40" fill="white" opacity="0.8"/>
+  <text x="200" y="205" font-family="Arial" font-size="12" fill="#4f8bf9" text-anchor="middle">Node A</text>
+  <circle cx="400" cy="200" r="40" fill="white" opacity="0.8"/>
+  <text x="400" y="205" font-family="Arial" font-size="12" fill="#4f8bf9" text-anchor="middle">Node B</text>
+  <circle cx="600" cy="200" r="40" fill="white" opacity="0.8"/>
+  <text x="600" y="205" font-family="Arial" font-size="12" fill="#4f8bf9" text-anchor="middle">Node C</text>
+  <line x1="240" y1="200" x2="360" y2="200" stroke="white" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="440" y1="200" x2="560" y2="200" stroke="white" stroke-width="3" marker-end="url(#arrow)"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="white" />
+    </marker>
+  </defs>
+</svg>

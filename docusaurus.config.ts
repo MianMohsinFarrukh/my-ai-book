@@ -77,8 +77,9 @@ const config: Config = {
     navbar: {
       title: 'Physical AI Textbook',
       logo: {
-        alt: 'Physical AI & Robotics Textbook Logo',
-        src: 'img/logo.svg',
+        alt: 'Physical AI & Humanoid Robotics Logo',
+        src: 'img/logo/logo.svg',
+        srcDark: 'img/logo/logo.svg', // Using same logo for dark mode for now
       },
       items: [
         {

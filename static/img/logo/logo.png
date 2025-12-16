@@ -1,0 +1,6 @@
+<!-- Placeholder for logo PNG version -->
+<svg width="200" height="80" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="80" fill="white"/>
+  <text x="100" y="45" font-family="Arial" font-size="16" fill="#4f8bf9" text-anchor="middle">Physical AI Logo</text>
+  <text x="100" y="65" font-family="Arial" font-size="12" fill="#735ce6" text-anchor="middle">Humanoid Robotics</text>
+</svg>

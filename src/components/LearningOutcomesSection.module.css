@@ -1,0 +1,24 @@
+.section {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+.imageContainer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.sectionImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section ul {
+  padding-left: 1.5rem;
+}
+
+.section li {
+  margin-bottom: 0.5rem;
+}
