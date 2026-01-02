@@ -212,6 +212,12 @@ See `.specify/memory/constitution.md` for code quality, testing, performance, se
 ## Active Technologies
 - Markdown/MDX, JavaScript/TypeScript (Node.js 18+) + Docusaurus 3.x, React 18+, Node.js package ecosystem (001-docusaurus-enhancement)
 - Static file-based (Markdown/MDX files, image assets) (001-docusaurus-enhancement)
+- Python 3.11, JavaScript/TypeScript (Node.js 18+) for Docusaurus frontend + FastAPI, OpenAI Agent SDK, Qdrant, Neon Postgres, Docusaurus 3.x, React 18+, UV for Python package management (001-rag-chatbot)
+- Qdrant (vector database), Neon Serverless Postgres (relational database), Markdown files (content source) (001-rag-chatbot)
+- JavaScript/TypeScript (Node.js 18+), React 18+ + stream-chat, stream-chat-react, Docusaurus 3.x, React 18+ (001-chatbot-stream-ui)
+- JavaScript/TypeScript (Node.js 18+), React 18+ + ChatKit library, Docusaurus 3.x, React 18+, clientModules API (001-chatkit-integration)
+- Python 3.11 (backend), JavaScript/TypeScript (Node.js 18+) + React 18+ (frontend) + FastAPI, OpenAI Agent SDK, Qdrant, Neon Postgres, Docusaurus 3.x, React 18+ (001-rag-chatbot)
+- Neon Serverless Postgres (relational data), Qdrant Cloud (vector embeddings), Docusaurus markdown files (content source) (001-rag-chatbot)
 
 ## Recent Changes
 - 001-docusaurus-enhancement: Added Markdown/MDX, JavaScript/TypeScript (Node.js 18+) + Docusaurus 3.x, React 18+, Node.js package ecosystem

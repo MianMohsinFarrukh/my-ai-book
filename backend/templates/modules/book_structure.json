@@ -1,0 +1,53 @@
+{
+  "title": "{{BOOK_TITLE}}",
+  "description": "{{BOOK_DESCRIPTION}}",
+  "author": "{{BOOK_AUTHOR}}",
+  "version": "{{BOOK_VERSION}}",
+  "modules": [
+    {
+      "id": "{{MODULE_ID}}",
+      "title": "{{MODULE_TITLE}}",
+      "description": "{{MODULE_DESCRIPTION}}",
+      "learning_objectives": [
+        "{{LEARNING_OBJECTIVE_1}}",
+        "{{LEARNING_OBJECTIVE_2}}",
+        "{{LEARNING_OBJECTIVE_3}}"
+      ],
+      "key_concepts": [
+        "{{KEY_CONCEPT_1}}",
+        "{{KEY_CONCEPT_2}}",
+        "{{KEY_CONCEPT_3}}"
+      ],
+      "chapters": [
+        {
+          "id": "{{CHAPTER_ID}}",
+          "title": "{{CHAPTER_TITLE}}",
+          "description": "{{CHAPTER_DESCRIPTION}}",
+          "sections": [
+            {
+              "title": "{{SECTION_TITLE}}",
+              "content": "{{SECTION_CONTENT}}",
+              "type": "{{SECTION_TYPE}}"
+            }
+          ],
+          "exercises": [
+            {
+              "type": "{{EXERCISE_TYPE}}",
+              "question": "{{EXERCISE_QUESTION}}",
+              "answer": "{{EXERCISE_ANSWER}}"
+            }
+          ]
+        }
+      ],
+      "prerequisites": [
+        "{{PREREQUISITE_1}}",
+        "{{PREREQUISITE_2}}"
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_at": "{{GENERATION_TIMESTAMP}}",
+    "generator_version": "{{GENERATOR_VERSION}}",
+    "claude_model": "{{CLAUDE_MODEL}}"
+  }
+}

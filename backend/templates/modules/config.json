@@ -1,0 +1,59 @@
+{
+  "module_template": {
+    "path": "module_template.md",
+    "required_fields": [
+      "MODULE_TITLE",
+      "MODULE_DESCRIPTION",
+      "LEARNING_OBJECTIVES",
+      "KEY_CONCEPTS",
+      "NUM_CHAPTERS",
+      "CHAPTERS"
+    ],
+    "optional_fields": [
+      "PREREQUISITES",
+      "MODULE_OVERVIEW",
+      "EXERCISES",
+      "MODULE_SUMMARY"
+    ]
+  },
+  "chapter_template": {
+    "path": "chapter_template.md",
+    "required_fields": [
+      "CHAPTER_TITLE",
+      "CHAPTER_DESCRIPTION",
+      "LEARNING_OBJECTIVES",
+      "INTRODUCTION",
+      "SECTION_TITLE_1",
+      "SECTION_CONTENT_1",
+      "CHAPTER_SUMMARY"
+    ],
+    "optional_fields": [
+      "SECTION_CODE_1",
+      "SECTION_TITLE_2",
+      "SECTION_CONTENT_2",
+      "SECTION_CODE_2",
+      "SECTION_TITLE_3",
+      "SECTION_CONTENT_3",
+      "SECTION_CODE_3",
+      "CODE_LANGUAGE",
+      "PRACTICAL_EXAMPLE",
+      "EXERCISES",
+      "KEY_TAKEAWAYS",
+      "REFERENCES"
+    ]
+  },
+  "docusaurus_config": {
+    "frontmatter_format": "yaml",
+    "output_format": "md",
+    "sidebar_position_field": "sidebar_position",
+    "title_field": "title",
+    "description_field": "description"
+  },
+  "generation_settings": {
+    "max_module_length": 5000,
+    "max_chapter_length": 2000,
+    "default_num_chapters": 3,
+    "enable_exercises": true,
+    "include_code_examples": true
+  }
+}

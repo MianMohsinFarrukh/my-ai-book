@@ -1,0 +1,103 @@
+# API Contract: Chat Service Integration
+
+## Overview
+This document defines the contract for the chat service integration that connects the ChatKit UI with the backend AI service for book content queries.
+
+## Endpoints
+
+### POST /api/chat/query
+Process a user query about book content and return AI-generated response.
+
+**Request:**
+```json
+{
+  "query": "string (the user's question)",
+  "context": {
+    "selectedText": "string (optional selected text for context)",
+    "pageUrl": "string (URL of the current page)",
+    "sessionId": "string (conversation session identifier)"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "id": "string (unique response identifier)",
+  "queryId": "string (reference to original query)",
+  "content": "string (AI-generated response)",
+  "timestamp": "ISO 8601 datetime",
+  "sources": ["string (optional references to book content)"],
+  "status": "string (success|error)"
+}
+```
+
+**Error Response:**
+```json
+{
+  "error": "string (error message)",
+  "code": "string (error code)",
+  "timestamp": "ISO 8601 datetime"
+}
+```
+
+## Chat Session Management
+
+### GET /api/chat/session/{sessionId}
+Retrieve conversation history for a specific session.
+
+**Response:**
+```json
+{
+  "sessionId": "string",
+  "messages": [
+    {
+      "id": "string",
+      "content": "string",
+      "sender": "string (user|ai)",
+      "timestamp": "ISO 8601 datetime"
+    }
+  ],
+  "createdAt": "ISO 8601 datetime"
+}
+```
+
+### POST /api/chat/session
+Create a new chat session.
+
+**Response:**
+```json
+{
+  "sessionId": "string (newly created session identifier)",
+  "status": "string (active)",
+  "createdAt": "ISO 8601 datetime"
+}
+```
+
+## Message Format for ChatKit
+
+### Outgoing Message (User Query)
+```json
+{
+  "id": "string (message ID)",
+  "text": "string (user's question)",
+  "sender": "user",
+  "timestamp": "ISO 8601 datetime",
+  "context": {
+    "selectedText": "string (selected text context)",
+    "pageUrl": "string (source page)"
+  }
+}
+```
+
+### Incoming Message (AI Response)
+```json
+{
+  "id": "string (message ID)",
+  "text": "string (AI response)",
+  "sender": "ai",
+  "timestamp": "ISO 8601 datetime",
+  "status": "sent",
+  "sources": ["string (content references)"]
+}
+```

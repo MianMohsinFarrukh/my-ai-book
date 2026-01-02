@@ -1,0 +1,92 @@
+# API Contract: Chat Service Integration
+
+## Overview
+This document defines the contract for the chat service integration that connects the Stream Chat UI with the backend AI service for book content queries.
+
+## Endpoints
+
+### POST /api/chat/query
+Process a user query about book content and return AI-generated response.
+
+**Request:**
+```json
+{
+  "query": "string (the user's question)",
+  "context": {
+    "selectedText": "string (optional selected text for context)",
+    "pageUrl": "string (URL of the current page)",
+    "sessionId": "string (conversation session identifier)"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "id": "string (unique response identifier)",
+  "queryId": "string (reference to original query)",
+  "content": "string (AI-generated response)",
+  "timestamp": "ISO 8601 datetime",
+  "sources": ["string (optional references to book content)"],
+  "status": "string (success|error)"
+}
+```
+
+**Error Response:**
+```json
+{
+  "error": "string (error message)",
+  "code": "string (error code)",
+  "timestamp": "ISO 8601 datetime"
+}
+```
+
+## Message Format for Stream Chat
+
+### Outgoing Message (User Query)
+```json
+{
+  "id": "string (message ID)",
+  "text": "string (user's question)",
+  "user": {
+    "id": "string (user identifier)",
+    "name": "string (user display name)"
+  },
+  "created_at": "ISO 8601 datetime",
+  "custom_context": {
+    "selectedText": "string (selected text context)",
+    "pageUrl": "string (source page)"
+  }
+}
+```
+
+### Incoming Message (AI Response)
+```json
+{
+  "id": "string (message ID)",
+  "text": "string (AI response)",
+  "user": {
+    "id": "ai-assistant",
+    "name": "AI Assistant",
+    "image": "string (avatar URL)"
+  },
+  "created_at": "ISO 8601 datetime",
+  "status": "sent",
+  "custom_data": {
+    "sources": ["string (content references)"],
+    "isAIResponse": true
+  }
+}
+```
+
+## WebSocket Events (Stream Chat)
+
+### Typing Indicators
+- Client sends: `typing.start` when user begins typing
+- Client sends: `typing.stop` when user stops typing
+- Client receives: typing indicators from other participants (AI responses)
+
+### Connection Management
+- Client connects to Stream Chat service on component mount
+- Client disconnects on component unmount
+- Automatic reconnection handling for network interruptions
